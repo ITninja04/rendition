@@ -1,4 +1,15 @@
 - commits:
+    - subject: 'patch: Update dependency monaco-editor-webpack-plugin to v5'
+      hash: 4e206f6cc09f85e24878cc7e86225ff27b51a416
+      body: |
+        Update monaco-editor-webpack-plugin from 4.2.0 to 5.0.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 21.12.1
+  date: 2021-11-03T20:14:27.713Z
+- commits:
     - subject: Add OpaqueLayer component
       hash: 9cca3844f8f39c171d7090bca69cff4cc1af8328
       body: ''
