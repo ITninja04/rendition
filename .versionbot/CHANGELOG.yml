@@ -1,4 +1,15 @@
 - commits:
+    - subject: 'patch: Update dependency monaco-editor-webpack-plugin to v6'
+      hash: d5fe2cc4b8281be5aefabf07f6cae37c599666ea
+      body: |
+        Update monaco-editor-webpack-plugin from 4.2.0 to 6.0.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 23.1.8
+  date: 2021-12-10T12:06:58.325Z
+- commits:
     - subject: Fix download image modal actions tooltips and clicks
       hash: b1ce3f128e032e38c6a8b143384210f0417accb3
       body: ''
