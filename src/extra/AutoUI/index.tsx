@@ -63,7 +63,7 @@ const HeaderGrid = styled(Flex)`
 	}
 `;
 
-export interface AutoUIProps<T> extends BoxProps {
+export interface AutoUIProps<T> extends Omit<BoxProps, 'onChange'> {
 	/** Model is the property that describe the data to display with a JSON structure */
 	model: AutoUIModel<T>;
 	/** Array of data or data entity to display */
@@ -88,6 +88,9 @@ export interface AutoUIProps<T> extends BoxProps {
 		entry: T,
 		event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
 	) => void;
+	// TODO: onChange should also be called when data in the table is sorted and when columns change
+	/** Function that gets called when filters change */
+	onChange?: (changes: { filters?: JSONSchema[] }) => void;
 	/** All the lenses available for this AutoUI component. Any default lenses will automatically be added to this array. */
 	customLenses?: LensTemplate[];
 	/** Additional context for picking the right lens */
@@ -104,6 +107,7 @@ export const AutoUI = <T extends AutoUIBaseResource<T>>({
 	refresh,
 	getBaseUrl,
 	onEntityClick,
+	onChange,
 	customLenses,
 	lensContext,
 	...boxProps
@@ -304,7 +308,14 @@ export const AutoUI = <T extends AutoUIBaseResource<T>>({
 													schema={model.schema}
 													filters={filters}
 													autouiContext={autouiContext}
-													changeFilters={setFilters}
+													changeFilters={(updatedFilters) => {
+														setFilters(updatedFilters);
+														if (onChange) {
+															onChange({
+																filters: updatedFilters,
+															});
+														}
+													}}
 													onSearch={(term) => (
 														<FocusSearch
 															searchTerm={term}

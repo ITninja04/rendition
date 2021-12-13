@@ -102,7 +102,6 @@ const loadRulesFromUrl = (
 
 interface PersistentFiltersProps extends FiltersProps {
 	viewsRestorationKey: string;
-	filtersRestorationKey: string;
 	history: History;
 }
 
@@ -113,7 +112,6 @@ export const PersistentFilters = ({
 	onViewsUpdate,
 	onFiltersUpdate,
 	viewsRestorationKey,
-	filtersRestorationKey,
 	history,
 	onSearch,
 	...otherProps
@@ -125,10 +123,8 @@ export const PersistentFilters = ({
 	const locationSearch = history?.location?.search ?? '';
 	const storedFilters = React.useMemo(() => {
 		const urlRules = loadRulesFromUrl(locationSearch, schema);
-		return !!urlRules?.length
-			? urlRules
-			: getFromLocalStorage<JSONSchema[]>(filtersRestorationKey) ?? [];
-	}, [locationSearch, schema, filtersRestorationKey]);
+		return !!urlRules?.length ? urlRules : [];
+	}, [locationSearch, schema]);
 
 	React.useEffect(() => {
 		if (!views && storedViews && onViewsUpdate) {
@@ -148,11 +144,8 @@ export const PersistentFilters = ({
 	// and we were able to load some from the local storage, then communicate them
 	// back to the parent component.
 	React.useEffect(() => {
-		updateUrl(storedFilters);
-		if (!filters?.length && storedFilters.length && onFiltersUpdate) {
-			onFiltersUpdate(storedFilters);
-		}
-	}, []);
+		filtersUpdate(storedFilters);
+	}, [storedFilters]);
 
 	const viewsUpdate = (views: FiltersView[]) => {
 		setToLocalStorage(viewsRestorationKey, views);
@@ -163,7 +156,6 @@ export const PersistentFilters = ({
 	};
 
 	const filtersUpdate = (filters: JSONSchema[]) => {
-		setToLocalStorage(filtersRestorationKey, filters);
 		updateUrl(filters);
 
 		if (onFiltersUpdate) {
