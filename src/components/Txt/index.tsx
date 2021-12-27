@@ -3,7 +3,24 @@ import styled, { css } from 'styled-components';
 import { style } from 'styled-system';
 import asRendition from '../../asRendition';
 import { RenditionSystemProps, Theme } from '../../common-types';
-import { monospace } from '../../utils';
+import { px, monospace } from '../../utils';
+import { Copy } from '../Copy';
+
+export const code = (props: ThemedTxtProps) =>
+	props.code
+		? css`
+				font-family: ${(props) => props.theme.monospace};
+				padding: 2px 4px;
+				font-size: 90%;
+				color: #c7254e;
+				background-color: #f9f2f4;
+				border-radius: 2px;
+				white-space: normal;
+				word-wrap: break-word;
+				font-size: 1em;
+				margin-right: ${(props) => px(props.theme.space[1])};
+		  `
+		: null;
 
 export const whitespace = (props: ThemedTxtProps) =>
 	props.whitespace
@@ -48,21 +65,37 @@ export const align = style({
 	cssProperty: 'text-align',
 });
 
+export const Lopy = (props: ThemedTxtProps) =>
+	props.truncate &&
+	css`
+		cursor: pointer;
+	`;
+
+export const LopyWrapper = styled.span`
+	display: inline-block;
+`;
+
 const BaseTxt = styled.div<TxtProps>`
 	${align}
 	${monospace}
 	${whitespace}
-
+	${code}
 	${caps}
 	${bold}
 	${italic}
-
 	${truncate}
 `;
 
 const Factory = (tag?: string) => {
 	return asRendition<React.FunctionComponent<TxtProps>>((props: any) => {
-		return <BaseTxt as={tag} {...props} />;
+		console.log('*** props.copy', props.copy);
+		return props.copy ? (
+			<Copy content={props.children} show={props.copy}>
+				<BaseTxt as={tag} {...props} />
+			</Copy>
+		) : (
+			<BaseTxt as={tag} {...props} />
+		);
 	});
 };
 
@@ -93,7 +126,6 @@ export type Align =
 	| 'unset';
 
 export interface InternalTxtProps extends React.HTMLAttributes<HTMLElement> {
-	/** If true, render text in a monospace font */
 	monospace?: boolean;
 	/** If true, render text in a bold font */
 	bold?: boolean;
@@ -107,6 +139,8 @@ export interface InternalTxtProps extends React.HTMLAttributes<HTMLElement> {
 	align?: Align;
 	/** If true, replace the text not contained in the container with three dots */
 	truncate?: boolean;
+	code?: boolean;
+	copy?: 'hover' | 'always';
 }
 
 export interface ThemedTxtProps extends InternalTxtProps {
@@ -118,6 +152,8 @@ export type TxtProps = InternalTxtProps & RenditionSystemProps;
 Base.displayName = 'Txt';
 Base.span = Factory('span');
 Base.p = Factory('p');
+
+// defining the stuff for copy, maybe this can be it's own thing in another
 
 /**
  * Displays a text block. A `<span>` tag can be used with `<Txt.span>` and a `<p>` tag can be used with `<Txt.p>`.

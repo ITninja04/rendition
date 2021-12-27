@@ -22,7 +22,7 @@ const CopyContainer = styled(Flex)<{
 	${ClipboardContainer} {
 		display: ${(props) => (props.show === 'always' ? 'inline' : 'none')};
 	}
-
+	}
 	&:hover {
 		${ClipboardContainer} {
 			display: inline;
@@ -47,6 +47,7 @@ const BaseCopy = ({
 			{...otherProps}
 		>
 			{children}
+
 			<ClipboardContainer
 				mx={2}
 				tooltip={{ text: 'Copied!', trigger: 'click' }}

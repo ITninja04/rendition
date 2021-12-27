@@ -12,7 +12,6 @@ import { Txt, TxtProps } from '../Txt';
 const Wrapper = styled(Txt.span)<InternalTextWithCopyProps>`
 	display: inline-block;
 	white-space: ${(props) => (props.code ? 'initial' : 'nowrap')};
-
 	code {
 		font-family: ${(props) => props.theme.monospace};
 		padding: 2px 4px;
@@ -81,7 +80,7 @@ export interface InternalTextWithCopyProps
 	extends Omit<React.HTMLAttributes<HTMLElement>, 'color'>,
 		TxtProps {
 	/** The value that should be copied to the clipboard */
-	copy: string;
+	copy: 'hover' | 'always';
 	/** Optionally show the copy button on hover or always show the button */
 	showCopyButton?: 'hover' | 'always';
 	code?: boolean;
