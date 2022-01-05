@@ -1,4 +1,14 @@
 - commits:
+    - subject: 'patch: Update ajv'
+      hash: 0e1543336d2bcbb3809c9abac0dd5c3a5428d9bf
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.4.4
+  date: 2022-01-05T19:14:08.248Z
+- commits:
     - subject: 'Table: Optimize for large number of items'
       hash: 59423a5e3b42f9d2859aef1f7b742dd02d79850a
       body: ''
