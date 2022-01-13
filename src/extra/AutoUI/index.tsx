@@ -129,6 +129,12 @@ export const AutoUI = <T extends AutoUIBaseResource<T>>({
 		ActionData<T> | undefined
 	>();
 
+	React.useEffect(() => {
+		if (!!actionData) {
+			setActionData({ ...actionData, affectedEntries: selected });
+		}
+	}, [selected]);
+
 	const showFilters = React.useMemo(
 		() => Array.isArray(data) && !!(data?.length && data.length > 5),
 		[data],
