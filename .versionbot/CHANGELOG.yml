@@ -1,4 +1,18 @@
 - commits:
+    - subject: >-
+        Render AutoUI actions with selected instead of
+        actionData.affectedEntries
+      hash: 57e4bde93be45c06f036d904fbcc7e5fea706c83
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Matthew Yarmolinsky <matthew-timothy@balena.io>
+        signed-off-by: Matthew Yarmolinsky <matthew-timothy@balena.io>
+      author: Matthew Yarmolinsky
+  version: 25.4.11
+  date: 2022-01-14T15:20:48.608Z
+- commits:
     - subject: Add missing dependency on react-router
       hash: 0debc83e9c5625c779aa4b23319c651914d08959
       body: |
