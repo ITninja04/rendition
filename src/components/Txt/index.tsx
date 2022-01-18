@@ -3,22 +3,20 @@ import styled, { css } from 'styled-components';
 import { style } from 'styled-system';
 import asRendition from '../../asRendition';
 import { RenditionSystemProps, Theme } from '../../common-types';
-import { px, monospace } from '../../utils';
-import { Copy } from '../Copy';
+import { monospace } from '../../utils';
+import { Box } from '../Box';
+import copyToClipboard from 'copy-to-clipboard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-regular-svg-icons/faCopy';
 
 export const code = (props: ThemedTxtProps) =>
 	props.code
 		? css`
 				font-family: ${(props) => props.theme.monospace};
 				padding: 2px 4px;
-				font-size: 90%;
+				font-size: 1em;
 				color: #c7254e;
 				background-color: #f9f2f4;
-				border-radius: 2px;
-				white-space: normal;
-				word-wrap: break-word;
-				font-size: 1em;
-				margin-right: ${(props) => px(props.theme.space[1])};
 		  `
 		: null;
 
@@ -65,15 +63,22 @@ export const align = style({
 	cssProperty: 'text-align',
 });
 
-export const Lopy = (props: ThemedTxtProps) =>
-	props.truncate &&
-	css`
-		cursor: pointer;
-	`;
-
-export const LopyWrapper = styled.span`
-	display: inline-block;
+const Copy = styled(Box)<{ showCopyButton: 'always' | 'hover' | undefined }>`
+	cursor: pointer;
+	visibility: ${(props) =>
+		props.showCopyButton === 'always' ? 'visible' : 'hidden'};
+	&:hover {
+		visibility: visible;
+	}
+	display: inline;
 `;
+
+const iconalign = (props: ThemedTxtProps) =>
+	props.iconalign &&
+	css`
+		display: inline-block;
+		vertical-align: bottom;
+	`;
 
 const BaseTxt = styled.div<TxtProps>`
 	${align}
@@ -84,15 +89,23 @@ const BaseTxt = styled.div<TxtProps>`
 	${bold}
 	${italic}
 	${truncate}
+	${iconalign}
 `;
-
+// style={{ display: 'inline-block', verticalAlign: 'bottom' }}
 const Factory = (tag?: string) => {
 	return asRendition<React.FunctionComponent<TxtProps>>((props: any) => {
-		console.log('*** props.copy', props.copy);
 		return props.copy ? (
-			<Copy content={props.children} show={props.copy}>
-				<BaseTxt as={tag} {...props} />
-			</Copy>
+			<div>
+				<BaseTxt as={tag} {...props} iconalign />
+				<Copy
+					tooltip={{ text: 'Copied!', trigger: 'click' }}
+					onClick={() => copyToClipboard(props.copy)}
+					showCopyButton={props.showCopyMode || 'always'}
+					{...props}
+				>
+					<FontAwesomeIcon icon={faCopy} />
+				</Copy>
+			</div>
 		) : (
 			<BaseTxt as={tag} {...props} />
 		);
@@ -126,11 +139,14 @@ export type Align =
 	| 'unset';
 
 export interface InternalTxtProps extends React.HTMLAttributes<HTMLElement> {
+	/** If true, render text in a monospace font */
 	monospace?: boolean;
 	/** If true, render text in a bold font */
 	bold?: boolean;
 	/** If true, render text in an italic font style */
 	italic?: boolean;
+	/** If true, it renders the text in way that makes it look like code */
+	code?: boolean;
 	/** If true, render text in uppercase */
 	caps?: boolean;
 	/** Equivalent to the CSS white-space property, one of 'normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap', 'initial', 'inherit' */
@@ -139,8 +155,12 @@ export interface InternalTxtProps extends React.HTMLAttributes<HTMLElement> {
 	align?: Align;
 	/** If true, replace the text not contained in the container with three dots */
 	truncate?: boolean;
-	code?: boolean;
-	copy?: 'hover' | 'always';
+	/** Displays a copy icon which copies the given string to the user's clipboard onClick */
+	copy?: string;
+	/**  Setting to 'always' ensures that the copy icon is always visible. 'hover' ensures that the copy icon is only visible on hover. By default, this is set to 'hover'. */
+	showCopyMode?: 'hover' | 'always';
+	/** Displays Txt as inline-block and vertical aligns items at the bottom. Good for aligning text with icons. */
+	iconalign?: boolean;
 }
 
 export interface ThemedTxtProps extends InternalTxtProps {
@@ -152,8 +172,6 @@ export type TxtProps = InternalTxtProps & RenditionSystemProps;
 Base.displayName = 'Txt';
 Base.span = Factory('span');
 Base.p = Factory('p');
-
-// defining the stuff for copy, maybe this can be it's own thing in another
 
 /**
  * Displays a text block. A `<span>` tag can be used with `<Txt.span>` and a `<p>` tag can be used with `<Txt.p>`.
