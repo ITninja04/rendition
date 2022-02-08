@@ -47,6 +47,7 @@ import { FocusSearch } from './Filters/FocusSearch';
 import { TableColumn } from '../../components/Table';
 import { getSelected, getSortingFunction } from './utils';
 import { CustomWidget } from './CustomWidget';
+import { Pagination } from '../../components/Table/TableBase';
 
 const HeaderGrid = styled(Flex)`
 	> * {
@@ -88,6 +89,14 @@ export interface AutoUIProps<T> extends BoxProps {
 		entry: T,
 		event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
 	) => void;
+	/** Event emitted on page change */
+	onPageChange?: (page: number, itemsPerPage: number) => void;
+	/** Event emitted on sort change */
+	onSort?: (sort: any) => void;
+	/** Event emitted on filters change */
+	onFiltersChange?: (filters: JSONSchema[]) => void;
+	/** Information from a server side pagination */
+	pagination?: Pagination;
 	/** All the lenses available for this AutoUI component. Any default lenses will automatically be added to this array. */
 	customLenses?: LensTemplate[];
 	/** Additional context for picking the right lens */
@@ -104,6 +113,9 @@ export const AutoUI = <T extends AutoUIBaseResource<T>>({
 	refresh,
 	getBaseUrl,
 	onEntityClick,
+	onPageChange,
+	onFiltersChange,
+	pagination,
 	customLenses,
 	lensContext,
 	...boxProps
@@ -135,13 +147,16 @@ export const AutoUI = <T extends AutoUIBaseResource<T>>({
 		[data],
 	);
 
-	const filtered = React.useMemo(
-		() => (Array.isArray(data) ? filter(filters, data) : []) as T[],
-		[data, filters],
-	);
+	const filtered = React.useMemo(() => {
+		if (pagination?.serverSide) {
+			return data;
+		}
+		return (Array.isArray(data) ? filter(filters, data) : []) as T[];
+	}, [data, filters]);
 
 	React.useEffect(() => {
 		setSelected([]);
+		onFiltersChange?.(filters);
 	}, [filters]);
 
 	const changeTags = React.useCallback(
@@ -399,6 +414,8 @@ export const AutoUI = <T extends AutoUIBaseResource<T>>({
 								autouiContext={autouiContext}
 								onEntityClick={lensRendererOnEntityClick}
 								model={model}
+								onPageChange={onPageChange}
+								pagination={pagination}
 							/>
 						)}
 

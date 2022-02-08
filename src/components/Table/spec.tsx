@@ -889,8 +889,7 @@ describe('Table component', () => {
 							[{ field: 'Name' }] as Array<TableColumn<PokedexInterface>>
 						}
 						data={PokeDex}
-						usePager
-						itemsPerPage={3}
+						pagination={{ itemsPerPage: 3 }}
 					/>
 				</Provider>,
 			);

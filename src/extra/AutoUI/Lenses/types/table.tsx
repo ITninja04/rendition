@@ -19,6 +19,9 @@ export const table: LensTemplate = {
 			data,
 			autouiContext,
 			onEntityClick,
+			onPageChange,
+			onSort,
+			pagination,
 		}: CollectionLensRendererProps<any>) => (
 			<Table<any>
 				rowKey="id"
@@ -28,9 +31,11 @@ export const table: LensTemplate = {
 				{...(hasUpdateActions && { onCheck: changeSelected })}
 				usePager={data && data.length > 5}
 				pagerPosition="bottom"
-				itemsPerPage={50}
 				getRowHref={autouiContext.getBaseUrl}
 				onRowClick={onEntityClick}
+				onPageChange={onPageChange}
+				onSort={onSort}
+				pagination={pagination}
 				columnStateRestorationKey={`${autouiContext.resource}__columns`}
 				sortingStateRestorationKey={`${autouiContext.resource}__sort`}
 				tagField={autouiContext.tagField}
