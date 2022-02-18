@@ -1,4 +1,15 @@
 - commits:
+    - subject: "patch: Update xterm-non-major"
+      hash: 1dddfdf55dc4fdd87783a97af239d6aaae356e58
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.12.2
+  title: "'patch: Update xterm-non-major'"
+  date: 2022-02-18T10:13:45.217Z
+- commits:
     - subject: "Table: Add fuzzy pager option"
       hash: 28c8a5d3e6e19c73bbfec3ade96d9e8b56d44068
       body: >
