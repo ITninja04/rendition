@@ -1,4 +1,15 @@
 - commits:
+    - subject: "patch: Update react-libs"
+      hash: e847c415a94022742798a1c25d86fc022838a096
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.12.3
+  title: "'patch: Update react-libs'"
+  date: 2022-02-22T10:42:28.566Z
+- commits:
     - subject: Improve filters style and fix boolean summary
       hash: cda601519992b96eeeda5003e3f27c8543a3f703
       body: ""
