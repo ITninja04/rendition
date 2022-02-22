@@ -1,4 +1,16 @@
 - commits:
+    - subject: "patch: Update dependency unist-util-visit-parents to ^3.1.1"
+      hash: f5a7c0faa8a13eee3597c0185ce4ab7d2813f77b
+      body: |
+        Update unist-util-visit-parents from 3.1.0 to 3.1.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.12.3
+  title: "'patch: Update dependency unist-util-visit-parents to ^3.1.1'"
+  date: 2022-02-22T10:41:34.388Z
+- commits:
     - subject: Improve filters style and fix boolean summary
       hash: cda601519992b96eeeda5003e3f27c8543a3f703
       body: ""
