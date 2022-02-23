@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Update dependency grommet to ~2.21.0"
+      hash: e0527ed712d27fd4646ed7f425eb53817651a34c
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-23T19:59:18.989Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
