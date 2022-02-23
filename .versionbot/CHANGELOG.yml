@@ -1,4 +1,16 @@
 - commits:
+    - subject: "patch: Update dependency lint-staged to v12"
+      hash: 23097bfed8b05f5b65a85c51d9d3308b063c5a08
+      body: |
+        Update lint-staged from 4.3.0 to 12.3.4
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  title: "'patch: Update dependency lint-staged to v12'"
+  date: 2022-02-23T14:00:06.518Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
