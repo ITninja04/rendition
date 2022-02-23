@@ -1,4 +1,15 @@
 - commits:
+    - subject: Adding copy props to Txt
+      hash: 582c02eba4d8377790808528cda4154095124068
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: jmakivic
+  version: 25.8.0
+  title: "'Make Txt base for TextWithCopy component'"
+  date: 2022-02-23T16:35:16.308Z
+- commits:
     - subject: Fix NoRecordsFoundArrow overlapping create action in AutoUI
       hash: ec256a1f4aa660a91e9f66b7795a52c46c87bb48
       body: ""
