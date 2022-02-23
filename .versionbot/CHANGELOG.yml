@@ -1,4 +1,15 @@
 - commits:
+    - subject: "patch: Update dependency core-js to ^3.21.1"
+      hash: f73ea8a003ed3162e79846a5ce041412ea0a99fa
+      body: |
+        Update core-js from 3.18.3 to 3.21.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-23T13:54:42.070Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
