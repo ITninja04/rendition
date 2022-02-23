@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Update rehype"
+      hash: 30be55ef4a35e2cce3c13ef4d880ec111d7509d0
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-23T13:55:06.823Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
