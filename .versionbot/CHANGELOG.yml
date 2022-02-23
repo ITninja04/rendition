@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Update xterm-non-major"
+      hash: 727fcc2753ffb949cc8539584f83b590cefe9d2d
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-23T13:55:10.333Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
