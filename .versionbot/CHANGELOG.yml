@@ -1,4 +1,15 @@
 - commits:
+    - subject: "patch: Update dependency unist-util-visit-parents to ^3.1.1"
+      hash: 854e5d52d560667b77a747b931a265a6afe7e165
+      body: |
+        Update unist-util-visit-parents from 3.1.0 to 3.1.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-23T13:54:26.911Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
