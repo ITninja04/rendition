@@ -1,4 +1,15 @@
 - commits:
+    - subject: "patch: Update dependency react to v17"
+      hash: dce36a1ad2ce2ccb924c28f7b4be47c87b7e6d88
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+  version: 25.14.0
+  title: "'patch: Update dependency react to v17'"
+  date: 2022-02-23T14:00:49.097Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
