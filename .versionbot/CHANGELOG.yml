@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Update dependency remark-breaks to ^2.0.2"
+      hash: ee6ac8e8a6cc2bff837fb038448be351ced43f69
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-23T13:54:22.365Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
