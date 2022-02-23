@@ -1,4 +1,15 @@
 - commits:
+    - subject: "patch: Update dependency husky to v7"
+      hash: 452b2c2835baef4eff90d032e98b630753c4174c
+      body: |
+        Update husky from 0.14.3 to 7.0.4
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-23T13:55:33.254Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
