@@ -1,4 +1,16 @@
 - commits:
+    - subject: "Filters: Stop saving filters to local storage"
+      hash: 2d4db4366e372eef854f924a1f5bd152170b5829
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+        Signed-off-by: Matthew Yarmolinsky <matthew-timothy@balena.io>
+        signed-off-by: Matthew Yarmolinsky <matthew-timothy@balena.io>
+      author: Matthew Yarmolinsky
+  version: 26.0.0
+  date: 2022-02-25T15:22:26.840Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
