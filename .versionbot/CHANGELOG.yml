@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Update types"
+      hash: fc6687a7ee1c7cc4ccaedef9ea3ac3d4cfa2a48c
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+  version: 25.13.2
+  date: 2022-02-26T00:24:42.667Z
+- commits:
     - subject: Remove duplicate contributor checklist item on PR template
       hash: d3744217e34e584a72b7ed23f60ccb6b3bfc773a
       body: |
